@@ -1,0 +1,630 @@
+connection: "gcp-audit-logs"
+
+# include all the views
+include: "/views/*.view"
+
+
+explore: cloudaudit_googleapis_com_activity {
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__authorization_info {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Authorizationinfo"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__authorization_info}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__authorization_info ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__resource_location__current_locations {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Resourcelocation Currentlocations"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__resource_location__current_locations}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__resource_location__current_locations ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__resource_location__original_locations {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Resourcelocation Originallocations"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__resource_location__original_locations}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__resource_location__original_locations ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__status__details_google_rpc_resourceinfo {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Status Details Google Rpc Resourceinfo"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__status__details_google_rpc_resourceinfo}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__status__details_google_rpc_resourceinfo ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__headers {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Requestmetadata Requestattributes Headers"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__request_metadata__request_attributes__headers}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__headers ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_update__bindings {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Policyupdate Bindings"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam__policy_update__bindings}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_update__bindings ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__auth__audiences {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Requestmetadata Requestattributes Auth Audiences"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__request_metadata__request_attributes__auth__audiences}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__auth__audiences ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__destination_attributes__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Requestmetadata Destinationattributes Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__request_metadata__destination_attributes__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__destination_attributes__labels ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_delta__binding_deltas {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Policydelta Bindingdeltas"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam__policy_delta__binding_deltas}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_delta__binding_deltas ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__auth__access_levels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Requestmetadata Requestattributes Auth Accesslevels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__request_metadata__request_attributes__auth__access_levels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__request_metadata__request_attributes__auth__access_levels ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_update__audit_configs {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Policyupdate Auditconfigs"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam__policy_update__audit_configs}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_update__audit_configs ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__policy_response__bindings {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Policyresponse Bindings"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__policy_response__bindings}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__policy_response__bindings ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_delta__audit_config_deltas {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Policydelta Auditconfigdeltas"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam__policy_delta__audit_config_deltas}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam__policy_delta__audit_config_deltas ;;
+    relationship: one_to_many
+  }
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__added_permissions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Admin Permissiondelta Addedpermissions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__added_permissions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__added_permissions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__removed_permissions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Iam Admin Permissiondelta Removedpermissions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__removed_permissions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_iam_admin__permission_delta__removed_permissions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__policy_response__audit_configs {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Policyresponse Auditconfigs"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__policy_response__audit_configs}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__policy_response__audit_configs ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events__referenced_fields {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tabledatareadevents Referencedfields"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events__referenced_fields}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events__referenced_fields ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__update_mask__paths {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Setiampolicyrequest Updatemask Paths"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__update_mask__paths}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__update_mask__paths ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tabledatareadevents"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_data_read_events ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__authentication_info__service_account_delegation_info {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Authenticationinfo Serviceaccountdelegationinfo"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__authentication_info__service_account_delegation_info}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__authentication_info__service_account_delegation_info ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__bindings {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Setiampolicyrequest Policy Bindings"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__bindings}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__bindings ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__update_mask__paths {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1beta4 Appengine Setiampolicy Request Updatemask Paths"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__update_mask__paths}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__update_mask__paths ;;
+    relationship: one_to_many
+  }
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_insert_request__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tableinsertrequest Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_insert_request__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_insert_request__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_update_request__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tableupdaterequest Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_update_request__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_update_request__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_update_response__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tableupdateresponse Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_update_response__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_update_response__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_insert_response__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Tableinsertresponse Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__table_insert_response__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__table_insert_response__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetupdaterequest Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetinsertrequest Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetupdateresponse Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__acl__entries {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetupdaterequest Resource Acl Entries"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__acl__entries}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_request__resource__acl__entries ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__acl__entries {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetinsertrequest Resource Acl Entries"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__acl__entries}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_request__resource__acl__entries ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__info__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetinsertresponse Resource Info Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__info__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__info__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__bindings {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1beta4 Appengine Setiampolicy Request Policy Bindings"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__bindings}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__bindings ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__audit_configs {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Setiampolicyrequest Policy Auditconfigs"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__audit_configs}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__set_iam_policy_request__policy__audit_configs ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__acl__entries {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetupdateresponse Resource Acl Entries"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__acl__entries}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_update_response__resource__acl__entries ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__acl__entries {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Datasetinsertresponse Resource Acl Entries"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__acl__entries}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__dataset_insert_response__resource__acl__entries ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__audit_configs {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1beta4 Appengine Setiampolicy Request Policy Auditconfigs"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__audit_configs}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1beta4_appengine__set_iam_policy__request__policy__audit_configs ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__labels {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobconfiguration Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__labels}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_status__additional_errors {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobstatus Additionalerrors"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_status__additional_errors}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_status__additional_errors ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__load__source_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobconfiguration Load Sourceuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__load__source_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__load__source_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__reservation_usage {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobstatistics Reservationusage"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__reservation_usage}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__reservation_usage ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobqueryresponse Job Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_response__job__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_views {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobstatistics Referencedviews"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_views}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_views ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobcompletedevent Job Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_completed_event__job__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobstatistics Referencedtables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_statistics__referenced_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobquerydoneresponse Job Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_query_done_response__job__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__extract__destination_uris {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobconfiguration Extract Destinationuris"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__extract__destination_uris}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__extract__destination_uris ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertrequest Resource Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_request__resource__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobinsertresponse Resource Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_insert_response__resource__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__query__table_definitions {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobconfiguration Query Tabledefinitions"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__query__table_definitions}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__query__table_definitions ;;
+    relationship: one_to_many
+  }
+
+
+
+
+
+  join: cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__table_copy__source_tables {
+    view_label: "Cloudaudit Googleapis Com Activity: Protopayload Auditlog Servicedata V1 Bigquery Jobgetqueryresultsresponse Job Jobconfiguration Tablecopy Sourcetables"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_activity.protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__table_copy__source_tables}) as cloudaudit_googleapis_com_activity__protopayload_auditlog__servicedata_v1_bigquery__job_get_query_results_response__job__job_configuration__table_copy__source_tables ;;
+    relationship: one_to_many
+  }
+
+
+}
+
+explore: cloudaudit_googleapis_com_system_event {
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__authorization_info {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Authorizationinfo"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__authorization_info}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__authorization_info ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__resource_location__current_locations {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Resourcelocation Currentlocations"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__resource_location__current_locations}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__resource_location__current_locations ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__resource_location__original_locations {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Resourcelocation Originallocations"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__resource_location__original_locations}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__resource_location__original_locations ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__headers {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Requestmetadata Requestattributes Headers"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__request_metadata__request_attributes__headers}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__headers ;;
+    relationship: one_to_many
+  }
+
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__auth__audiences {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Requestmetadata Requestattributes Auth Audiences"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__request_metadata__request_attributes__auth__audiences}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__auth__audiences ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__destination_attributes__labels {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Requestmetadata Destinationattributes Labels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__request_metadata__destination_attributes__labels}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__destination_attributes__labels ;;
+    relationship: one_to_many
+  }
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__auth__access_levels {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Requestmetadata Requestattributes Auth Accesslevels"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__request_metadata__request_attributes__auth__access_levels}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__request_metadata__request_attributes__auth__access_levels ;;
+    relationship: one_to_many
+  }
+
+
+
+  join: cloudaudit_googleapis_com_system_event__protopayload_auditlog__authentication_info__service_account_delegation_info {
+    view_label: "Cloudaudit Googleapis Com System Event: Protopayload Auditlog Authenticationinfo Serviceaccountdelegationinfo"
+    sql: LEFT JOIN UNNEST(${cloudaudit_googleapis_com_system_event.protopayload_auditlog__authentication_info__service_account_delegation_info}) as cloudaudit_googleapis_com_system_event__protopayload_auditlog__authentication_info__service_account_delegation_info ;;
+    relationship: one_to_many
+  }
+}
